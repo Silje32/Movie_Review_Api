@@ -26,4 +26,16 @@ const getReviewsByMovieId = (req, res) => {
 }
 */
 
+/* 
+module.exports =
+{
+    getAllMovies,
+    getMovieById,
+    postMovie,
+    putMovie,
+    postReview,
+    getReviewsByMovieId
+};  
+*/
+
 /* Når man har laget en controller må man også lage en route */

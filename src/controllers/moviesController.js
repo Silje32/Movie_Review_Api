@@ -16,14 +16,6 @@ const postMovie = (req, res) => {
 const putMovie = (req, res) => {
     // Rediger en film
 }
-
-const postReview = (req, res) => {
-    // Legg inn en review
-}
-
-const getReviewsByMovieId = (req, res) => {
-    // Hent alle reviews for en spesifikk film
-}
 */
 
 /* 
@@ -33,8 +25,6 @@ module.exports =
     getMovieById,
     postMovie,
     putMovie,
-    postReview,
-    getReviewsByMovieId
 };  
 */
 

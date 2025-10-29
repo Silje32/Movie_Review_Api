@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/Silje32/Movie_Review_Api/issues"
   },
-  "homepage": "https://github.com/Silje32/Movie_Review_Api#readme"
+  "homepage": "https://github.com/Silje32/Movie_Review_Api#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mssql": "^12.0.0",
+    "tedious": "^19.0.0"
+  }
 }

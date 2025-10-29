@@ -14,7 +14,7 @@ const getReviewsByMovieId = (req, res) => {
 module.exports =
 {
     postReview,
-    getReviewsByMovieId
+    getReviewsByMovieId,
 };  
 */
 

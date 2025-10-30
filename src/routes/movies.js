@@ -13,10 +13,13 @@ const {
 } = require("../controllers/moviesController");
 
 // Define routes
-router.get("/", getAllMovies);
-router.get("/:id", getMovieById);
-router.post("/", createMovie);
-router.put("/:id", updateMovie);
-router.delete("/:id", deleteMovie);
+router.route("/")
+.get(moviesController.getAllMovies);
+.post(moviesController.createMovie);
+
+router.route("/:id")
+.get(moviesController.getMovieById);
+.put(moviesController.updateMovie);
+.delete(moviesController.deleteMovie);
 
 module.exports = router;

@@ -11,8 +11,8 @@ const app = express();
 app.use(bodyParser.json());
 
 // routes
-app.use("/movies", moviesRoutes);
-app.use("/reviews", reviewsRoutes);
+app.use("/routes/movies", moviesRoutes);
+app.use("/routes/reviews", reviewsRoutes);
 
 const PORT = process.env.PORT || 3500;
 app.listen;

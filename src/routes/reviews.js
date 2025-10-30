@@ -8,7 +8,8 @@ const {
 } = require("../controllers/reviewsController");
 
 // Define routes
-router.post("/movies/:id/reviews", postReviews);
-router.get("/movies/:id/reviews", getReviewsByMovieId);
+router("/:id")
+  .post(reviewController.postReviews)
+  .get(reviewController.getReviewsByMovieId);
 
 module.exports = router;

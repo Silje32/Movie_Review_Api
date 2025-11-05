@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const moviesRoutes = require("./routes/movies.js");
 const reviewsRoutes = require("./routes/reviews.js");
+/* 
 const path = require("path");
 const Database = require("better-sqlite3");
 const dbPath = path.join(
@@ -12,7 +13,8 @@ const dbPath = path.join(
   "reviews_controller.sqlite"
 );
 const db = new Database(dbPath, { verbose: console.log });
-console.log("Connected to the SQLite database and created a Table.");
+console.log("Connected to the SQLite database and created a Table."); 
+*/
 
 // create express app
 const app = express();

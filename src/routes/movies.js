@@ -1,16 +1,16 @@
-const express = require("express");
-const router = express.Router();
-
-// routes
-
-// Controller functions
+// imports
+// first party imports
 const {
   getAllMovies,
   getMovieById,
   createMovie,
   updateMovie,
   deleteMovie,
-} = require("../controllers/moviesController");
+} = require("../controllers/moviesController.sqlite");
+
+// third party imports
+const express = require("express");
+const router = express.Router();
 
 // Define routes
 router

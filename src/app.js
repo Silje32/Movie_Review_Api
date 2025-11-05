@@ -3,7 +3,16 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const moviesRoutes = require("./routes/movies.js");
 const reviewsRoutes = require("./routes/reviews.js");
-const db = require();
+const path = require("path");
+const Database = require("better-sqlite3");
+const dbPath = path.join(
+  _dirname,
+  "Database",
+  "movies_controller.sqlite",
+  "reviews_controller.sqlite"
+);
+const db = new Database(dbPath, { verbose: console.log });
+console.log("Connected to the SQLite database and created a Table.");
 
 // create express app
 const app = express();
@@ -19,24 +28,34 @@ const PORT = process.env.PORT || 3500;
 app.listen;
 
 // Create Movies table
-db.prepare("DROP TABLE IF EXISTS Movies").run();
-
 db.prepare(
-  `CREATE TABLE Movies
+  `CREATE TABLE IF NOT EXISTS Movies
 (
-  `
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  director TEXT NOT NULL,
+  release_year INTEGER NOT NULL,
+  genre TEXT NOT NULL
+)
+  
+`
 ).run();
-console.log("Migration completed: Movies table created.");
+console.log("Movies table created.");
 
 // Create Reviews table
-db.prepare("DROP TABLE IF EXISTS Reviews").run();
-
 db.prepare(
-  `CREATE TABLE Reviews
+  `CREATE TABLE IF NOT EXISTS Reviews
 (
- `
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  movieId INTEGER FOREIGN KEY AUTOINCREMENT,
+  reviewAuthor: TEXT NOT NULL,
+  reviewText: TEXT NOT NULL,
+  rating: INTEGER NOT NULL
+)
+  
+`
 ).run();
-console.log("Migration completed: Reviews table created.");
+console.log("Reviews table created.");
 
 // start server
 app.listen(PORT, () => {

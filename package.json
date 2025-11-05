@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Silje32/Movie_Review_Api#readme",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "better-sqlite3": "^12.4.1",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",

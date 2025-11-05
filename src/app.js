@@ -1,20 +1,26 @@
 // imports
-const express = require("express");
-const bodyParser = require("body-parser");
+// first party
+const moviesController = require("./controllers/moviesController.sqlite");
+const reviewController = require("./controllers/reviewsController.sqlite");
 const moviesRoutes = require("./routes/movies.js");
 const reviewsRoutes = require("./routes/reviews.js");
-/* 
+const seedMoviesTable = require("main.js");
+const seedReviewsTable = require("main.js");
+
+// third party
+const express = require("express");
+const bodyParser = require("body-parser");
+
 const path = require("path");
 const Database = require("better-sqlite3");
 const dbPath = path.join(
   _dirname,
-  "Database",
+  "controllers",
   "movies_controller.sqlite",
   "reviews_controller.sqlite"
 );
 const db = new Database(dbPath, { verbose: console.log });
-console.log("Connected to the SQLite database and created a Table."); 
-*/
+console.log("Connected to the SQLite database and created a Table.");
 
 // create express app
 const app = express();
@@ -25,6 +31,8 @@ app.use(bodyParser.json());
 // routes
 app.use("/routes/movies", moviesRoutes);
 app.use("/routes/reviews", reviewsRoutes);
+app.use("main.js", seedMoviesTable);
+app.use("main.js", seedReviewsTable);
 
 const PORT = process.env.PORT || 3500;
 app.listen;

@@ -1,9 +1,9 @@
 // imports
 // first party imports
 const {
-  postReviews,
+  postReview,
   getReviewsByMovieId,
-} = require("../controllers/reviewsController");
+} = require("../controllers/reviewController.sqlite.js");
 
 // third party imports
 const express = require("express");

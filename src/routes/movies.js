@@ -3,10 +3,9 @@
 const {
   getAllMovies,
   getMovieById,
-  createMovie,
-  updateMovie,
-  deleteMovie,
-} = require("../controllers/moviesController.sqlite");
+  postMovie,
+  putMovie,
+} = require("../controllers/moviesController.sqlite.js");
 
 // third party imports
 const express = require("express");
@@ -21,7 +20,6 @@ router
 router
   .route("/:id")
   .get(moviesController.getMovieById)
-  .put(moviesController.updateMovie)
-  .delete(moviesController.deleteMovie);
+  .put(moviesController.updateMovie);
 
 module.exports = router;

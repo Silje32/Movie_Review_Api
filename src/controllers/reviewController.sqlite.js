@@ -1,7 +1,8 @@
 /* Lag CRUD-endepunkter */
 
 const postReview = (req, res) => {
-  // Legg inn en review
+  // Legg inn en review.
+  // Når en anmeldelse legges til: 201 Created.
 };
 
 const getReviewsByMovieId = (req, res) => {

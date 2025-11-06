@@ -2,18 +2,23 @@
 
 const getAllMovies = (req, res) => {
   // Hent alle filmer fra databasen
+  // Hvis noen prøver å hente en film som ikke finnes : 404 Not Found.
 };
 
 const getMovieById = (req, res) => {
-  // Hent en spesifikk film basert på ID
+  // Hent en spesifikk film basert på ID.
+  //
 };
 
+// Legg til en ny film i databasen.
 const postMovie = (req, res) => {
-  // Legg til en ny film i databasen
+  // Hvis noen sender inn en post uten title eller year: 400 Bad Request.
+  // Når en film blir opprettet: 201 Created.
 };
 
 const putMovie = (req, res) => {
   // Rediger en film
+  // Når en film blir oppdatert: 200 OK eller 204 No Content.
 };
 
 module.exports = {

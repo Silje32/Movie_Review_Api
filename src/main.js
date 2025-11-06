@@ -2,7 +2,7 @@
 function seedMoviesTable({ id, title, director, release_year, genre }) {
   const insert = db.prepare(
     `INSERT INTO Movies (id, title, director, release_year, genre) 
-     VALUES (?, ?, ?)`
+     VALUES (?, ?, ?, ?, ?)`
   );
   return insert.run({ id, title, director, release_year, genre });
 }

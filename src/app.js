@@ -1,7 +1,7 @@
 // imports
 // first party
-const moviesController = require("./controllers/moviesController.sqlite");
-const reviewController = require("./controllers/reviewsController.sqlite");
+const moviesController = require("./controllers/moviesController.sqlite.js");
+const reviewController = require("./controllers/reviewController.sqlite.js");
 const moviesRoutes = require("./routes/movies.js");
 const reviewsRoutes = require("./routes/reviews.js");
 const seedMoviesTable = require("main.js");
@@ -31,8 +31,8 @@ app.use(bodyParser.json());
 // routes
 app.use("/routes/movies", moviesRoutes);
 app.use("/routes/reviews", reviewsRoutes);
-app.use("main.js", seedMoviesTable);
-app.use("main.js", seedReviewsTable);
+app.use("/main.js", seedMoviesTable);
+app.use("/main.js", seedReviewsTable);
 
 const PORT = process.env.PORT || 3500;
 app.listen;
@@ -70,6 +70,18 @@ console.log("Reviews table created.");
 // start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+});
+
+// stop server
+process.on("SIGINT", () => {
+  try {
+    db.close();
+    console.log("Database connection closed.");
+  } catch (error) {
+    console.error("Failed to close database connection:", error.message);
+  } finally {
+    process.exit(0);
+  }
 });
 
 module.exports = app;

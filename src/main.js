@@ -7,8 +7,6 @@ function seedMoviesTable({ id, title, director, release_year, genre }) {
   return insert.run({ id, title, director, release_year, genre });
 }
 
-module.exports = { seedMoviesTable };
-
 /* Seeding Reviews table */
 function seedReviewsTable({ id, movieId, reviewAuthor, reviewText, rating }) {
   const insert = db.prepare(
@@ -18,4 +16,7 @@ function seedReviewsTable({ id, movieId, reviewAuthor, reviewText, rating }) {
   return insert.run({ id, movieId, reviewAuthor, reviewText, rating });
 }
 
-module.exports = { seedReviewsTable };
+module.exports = {
+  seedMoviesTable,
+  seedReviewsTable,
+};

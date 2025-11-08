@@ -1,3 +1,7 @@
+// imports
+const Database = require("better-sqlite3");
+const db = new Database("./database");
+
 /* Seeding Movies table */
 function seedMoviesTable({ id, title, director, release_year, genre }) {
   const insert = db.prepare(
@@ -15,7 +19,6 @@ function seedReviewsTable({ id, movieId, reviewAuthor, reviewText, rating }) {
   );
   return insert.run({ id, movieId, reviewAuthor, reviewText, rating });
 }
-
 module.exports = {
   seedMoviesTable,
   seedReviewsTable,

@@ -3,31 +3,12 @@ const { seedMoviesTable } = require("../main.sqlite.js");
 
 // Hent alle filmer fra databasen
 const getAllMovies = (req, res) => {
-  if ((!title || !director, !release_year, !genre)) {
-    return res
-      .status(400)
-      .json({ error: "Title, director, release year and genre are required." });
-  }
   try {
-    const newMovie = seedMoviesTable({
-      title,
-      director,
-      release_year,
-      genre,
-    });
-    res.status(201).json({
-      message: "Movie created successfully.",
-      movie: {
-        id: newMovie.lastInsertRowid,
-        title,
-        director,
-        release_year,
-        genre,
-      },
-    });
-    // Hvis noen prøver å hente en film som ikke finnes : 404 Not Found.
+    const newMovie = seedMoviesTable();
+    res.status(newMovie);
   } catch (error) {
-    console.error("Error creating movie:", error.message);
+    // Hvis noen prøver å hente en film som ikke finnes : 404 Not Found.
+    console.error("Database error", error.message);
     res.status(404).json({
       error: "Not Found.",
     });

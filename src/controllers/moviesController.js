@@ -1,5 +1,5 @@
 /* Lag CRUD-endepunkter */
-const { seedMoviesTable } = require("../main.js");
+const { seedMoviesTable } = require("../main.sqlite.js");
 
 // Hent alle filmer fra databasen
 const getAllMovies = (req, res) => {

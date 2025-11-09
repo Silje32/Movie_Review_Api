@@ -1,5 +1,5 @@
 /* Lag CRUD-endepunkter */
-const { seedReviewsTable } = require("../main.js");
+const { seedReviewsTable } = require("../main.sqlite.js");
 
 // Legg inn en review.
 const postReview = (req, res) => {

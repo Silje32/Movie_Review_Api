@@ -3,7 +3,7 @@
 const {
   postReview,
   getReviewsByMovieId,
-} = require("../controllers/reviewController.sqlite.js");
+} = require("../controllers/reviewController.js");
 
 // third party imports
 const express = require("express");

@@ -5,7 +5,7 @@ const {
   getMovieById,
   postMovie,
   putMovie,
-} = require("../controllers/moviesController.sqlite.js");
+} = require("../controllers/moviesController.js");
 
 // third party imports
 const express = require("express");

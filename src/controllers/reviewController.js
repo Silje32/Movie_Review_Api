@@ -1,6 +1,8 @@
-/* Lag CRUD-endepunkter */
-const { post } = require("../app.js");
+// Imports
 const { seedReviewsTable } = require("../main.sqlite");
+const { post } = require("../app.js");
+
+/* Lag CRUD-endepunkter */
 
 // Legg inn en review. (Create)
 const postReview = (req, res) => {

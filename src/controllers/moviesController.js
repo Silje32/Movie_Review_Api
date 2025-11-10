@@ -1,5 +1,7 @@
+// Imports
+const { seedMoviesTable } = require("../main.sqlite");
+
 /* Lag CRUD-endepunkter */
-const { seedMoviesTable } = require("../main.sqlite.js");
 
 // Hent alle filmer fra databasen (Read)
 const getAllMovies = (req, res) => {

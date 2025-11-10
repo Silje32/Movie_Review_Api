@@ -17,7 +17,7 @@ const usersDB = {
 };
 */
 
-const handleNewUser = async (req, res) => {
+const authorizeNewUser = async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password)
     return res
@@ -47,4 +47,4 @@ const refreshToken = jwt.sign(
 
 res.json({ success: `User ${username} logged in!` });
 
-module.exports = { handleNewUser };
+module.exports = { authorizeNewUser };

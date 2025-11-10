@@ -1,11 +1,11 @@
 // imports
 // first party
-const moviesController = require("./controllers/moviesController.sqlite.js");
-const reviewController = require("./controllers/reviewController.sqlite.js");
+const moviesController = require("./controllers/moviesController.js");
+const reviewController = require("./controllers/reviewController.js");
 const moviesRoutes = require("./routes/movies.js");
 const reviewsRoutes = require("./routes/reviews.js");
-const seedMoviesTable = require("main.js");
-const seedReviewsTable = require("main.js");
+const seedMoviesTable = require("main.sqlite");
+const seedReviewsTable = require("main.sqlite");
 
 // third party
 const express = require("express");
@@ -13,12 +13,7 @@ const bodyParser = require("body-parser");
 
 const path = require("path");
 const Database = require("better-sqlite3");
-const dbPath = path.join(
-  _dirname,
-  "controllers",
-  "movies_controller.sqlite",
-  "reviews_controller.sqlite"
-);
+const dbPath = path.join(_dirname, "main.sqlite");
 const db = new Database(dbPath, { verbose: console.log });
 console.log("Connected to the SQLite database and created a Table.");
 
@@ -29,10 +24,11 @@ const app = express();
 app.use(bodyParser.json());
 
 // routes
-app.use("/routes/movies", moviesRoutes);
-app.use("/routes/reviews", reviewsRoutes);
-app.use("/main.js", seedMoviesTable);
-app.use("/main.js", seedReviewsTable);
+app.use("/routes/user.js", registerController);
+app.use("/routes/movies.js", moviesRoutes);
+app.use("/routes/reviews.js", reviewsRoutes);
+app.use("/main.sqlite", seedMoviesTable);
+app.use("/main.sqlite", seedReviewsTable);
 
 const PORT = process.env.PORT || 3500;
 app.listen;

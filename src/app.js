@@ -24,6 +24,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // routes
+app.use("/routes/auth.js", authController);
 app.use("/routes/user.js", registerController);
 app.use("/routes/movies.js", moviesRoutes);
 app.use("/routes/reviews.js", reviewsRoutes);

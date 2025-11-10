@@ -1,4 +1,5 @@
 /* Lag CRUD-endepunkter */
+const { post } = require("../app.js");
 const { seedReviewsTable } = require("../main.sqlite.js");
 
 // Legg inn en review.
@@ -38,36 +39,23 @@ const postReview = (req, res) => {
 
 // Hent alle reviews for en spesifikk film
 const getReviewsByMovieId = (req, res) => {
-  if ((!title || !director, !release_year, !genre)) {
-    return res
-      .status(400)
-      .json({ error: "Title, director, release year and genre are required." });
-  }
+  const { id } = req.params;
+
   try {
-    const newReview = seedReviewsTable({
-      title,
-      director,
-      release_year,
-      genre,
-    });
-    res.status(201).json({
-      message: "Review created successfully.",
-      review: {
-        id: newReview.lastInsertRowid,
-        title,
-        director,
-        release_year,
-        genre,
-      },
-    });
+    const postReview = getReviewsById(id);
+    if (!postReview) {
+      return res
+        .status(404)
+        .json({ error: "Reviews not found for the movie." });
+    }
+    res.json();
   } catch (error) {
-    console.error("Error creating review:", error.message);
+    console.error("Database error:", error.message);
     res.status(500).json({
-      error: "An error occurred while creating the review.",
+      error: "An error occurred while fetching the review.",
     });
   }
 };
-
 module.exports = {
   postReview,
   getReviewsByMovieId,

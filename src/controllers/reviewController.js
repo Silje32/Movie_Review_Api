@@ -1,11 +1,11 @@
 /* Lag CRUD-endepunkter */
 const { post } = require("../app.js");
-const { seedReviewsTable } = require("../main.sqlite.js");
+const { seedReviewsTable } = require("../main.sqlite");
 
-// Legg inn en review.
+// Legg inn en review. (Create)
 const postReview = (req, res) => {
   const { movieId, reviewAuthor, reviewText, rating } = req.body;
-  if ((!movieId || !reviewAuthor, !reviewText, !rating)) {
+  if (!movieId || !reviewAuthor || !reviewText || !rating) {
     return res.status(400).json({
       error: "MovieId, reviewAuthor, reviewText and rating are required.",
     });
@@ -37,7 +37,7 @@ const postReview = (req, res) => {
   }
 };
 
-// Hent alle reviews for en spesifikk film
+// Hent alle reviews for en spesifikk film. (Read)
 const getReviewsByMovieId = (req, res) => {
   const { id } = req.params;
 

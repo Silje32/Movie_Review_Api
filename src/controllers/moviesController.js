@@ -17,32 +17,18 @@ const getAllMovies = (req, res) => {
 
 // Hent en spesifikk film basert på ID.
 const getMovieById = (req, res) => {
-  if ((!title || !director, !release_year, !genre)) {
-    return res
-      .status(400)
-      .json({ error: "Title, director, release year and genre are required." });
-  }
+  const { id } = req.params;
+
   try {
-    const newMovie = seedMoviesTable({
-      title,
-      director,
-      release_year,
-      genre,
-    });
-    res.status(201).json({
-      message: "Movie created successfully.",
-      movie: {
-        id: newMovie.lastInsertRowid,
-        title,
-        director,
-        release_year,
-        genre,
-      },
-    });
+    const getAllMovies = getMovieById(id);
+    if (!getAllMovies) {
+      return res.status(404).json({ error: "Movie not found." });
+    }
+    res.json(getAllMovies);
   } catch (error) {
-    console.error("Error creating movie:", error.message);
+    console.error("Database error:", error.message);
     res.status(500).json({
-      error: "An error occurred while creating the movie.",
+      error: "An error occurred while fetching the movie.",
     });
   }
 };

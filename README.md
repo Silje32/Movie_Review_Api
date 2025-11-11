@@ -34,3 +34,10 @@
 4.  Make a req, res function and create a try catch block.
 5.  Inside the try block make a hashedPwd await function.
     const hashedPwd = await bcrypt.hash(pwd,10);
+
+# How to integrate SQLite:
+
+1. In the terminal write: npm install better-sqlite3.
+2. Check in package.json that the file is properly installed:
+   "dependencies"
+   "better-sqlite3"

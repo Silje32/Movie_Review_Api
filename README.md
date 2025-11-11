@@ -1,6 +1,36 @@
-# Lag et Movie Review API slik at både filmelskere og kritikere kan finne dele og oppdatere filmanmeldelser.
+# Lag et Movie Review API slik at både filmelskere og kritikere kan finne dele og oppdatere filmanmeldelser:
 
-# Dependencies :
+# How to make a .env file:
 
-bcrypt:
-jsonwebtoken:
+1.  In the terminal write : npm install dotenv.
+2.  Check that the package is installed as a dependency in package.json :
+    "dependencies"
+    "dotenv"
+3.  In the root folder make a .env file.
+
+# How to Authorize:
+
+1.  In the terminal write: npm install jsonwebtoken.
+2.  Check in package.json that the file is properly installed:
+    "dependencies"
+    "jsonwebtoken"
+3.  Write the json webtokens in the .env file.
+
+# How to make a cookie:
+
+1.  In the terminal write: npm install cookie-parser.
+2.  Check in package.json that the file is properly installed:
+    "dependencies"
+    "cookie-parser"
+
+# How to Hash a password:
+
+1.  In the terminal write: npm install bcrypt.
+2.  Check in package.json that the file is properly installed:
+    "dependencies"
+    "bcrypt"
+3.  Import bcrypt in the file you want to use it:
+    const bcrypt = require("bcrypt");
+4.  Make a req, res function and create a try catch block.
+5.  Inside the try block make a hashedPwd await function.
+    const hashedPwd = await bcrypt.hash(pwd,10);

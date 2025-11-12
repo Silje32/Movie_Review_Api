@@ -1,5 +1,10 @@
 // Imports
-const { seedMoviesTable } = require("../main.sqlite");
+const {
+  getAllMovies,
+  getMovieById,
+  postMovie,
+  putMovie,
+} = require("../../main.sqlite");
 
 /* Lag CRUD-endepunkter */
 
@@ -69,36 +74,36 @@ const postMovie = (req, res) => {
       error: "An error occurred while creating the movie.",
     });
   }
+};
 
-  // Rediger en film (Update).
-  const putMovie = (req, res) => {
-    const { id } = req.params;
-    const { title, director, release_year, genre } = req.body;
+// Rediger en film (Update).
+const putMovie = (req, res) => {
+  const { id } = req.params;
+  const { title, director, release_year, genre } = req.body;
 
-    // Når en film blir oppdatert: 200 OK eller 204 No Content.
-    if (!title || !director || !release_year || !genre) {
-      return res.status(200).json({ error: "OK" });
+  // Når en film blir oppdatert: 200 OK eller 204 No Content.
+  if (!title || !director || !release_year || !genre) {
+    return res.status(200).json({ error: "OK" });
+  }
+  try {
+    const result = updateMovie(id, { title, director, release_year, genre });
+
+    if (result.changes === 0) {
+      return res.status(204).json({ error: "No content." });
     }
-    try {
-      const result = updateMovie(id, { title, director, release_year, genre });
+    res.json({ message: "Movie updated successfully." });
+  } catch (error) {
+    console.error("Database error:", error.message);
+    res.status(500).json({
+      error: "Failed to update movie.",
+    });
+  }
+};
 
-      if (result.changes === 0) {
-        return res.status(204).json({ error: "No content." });
-      }
-      res.json({ message: "Movie updated successfully." });
-    } catch (error) {
-      console.error("Database error:", error.message);
-      res.status(500).json({
-        error: "Failed to update movie.",
-      });
-    }
-  };
-
-  module.exports = {
-    getAllMovies,
-    getMovieById,
-    postMovie,
-    putMovie,
-  };
+module.exports = {
+  getAllMovies,
+  getMovieById,
+  postMovie,
+  putMovie,
 };
 /* Når man har laget en controller må man også lage en route */

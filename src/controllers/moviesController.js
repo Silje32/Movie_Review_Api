@@ -1,11 +1,3 @@
-// Imports
-const {
-  getAllMovies,
-  getMovieById,
-  postMovie,
-  putMovie,
-} = require("../../main.sqlite");
-
 /* Lag CRUD-endepunkter */
 
 // Hent alle filmer fra databasen (Read)

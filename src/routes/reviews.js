@@ -1,8 +1,8 @@
 // imports
 // first party imports
 const {
-  postReview,
   getReviewsByMovieId,
+  postReview,
 } = require("../controllers/reviewController.js");
 
 // third party imports
@@ -10,8 +10,6 @@ const express = require("express");
 const router = express.Router();
 
 // Define routes
-router("/:id")
-  .post(reviewController.postReviews)
-  .get(reviewController.getReviewsByMovieId);
+router("/:id").get(getReviewsByMovieId).post(postReview);
 
 module.exports = router;

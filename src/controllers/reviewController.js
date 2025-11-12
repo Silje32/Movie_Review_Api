@@ -1,6 +1,6 @@
 // Imports
-const { seedReviewsTable } = require("../main.sqlite");
-const { post } = require("../app.js");
+const { seedReviewsTable } = require("../../main.sqlite");
+const { post } = require("../../app.js");
 
 /* Lag CRUD-endepunkter */
 

@@ -10,6 +10,7 @@ const {
 // third party imports
 const express = require("express");
 const router = express.Router();
+const path = require("path");
 
 // Define routes
 router.route("/").get(getAllMovies).post(postMovie);

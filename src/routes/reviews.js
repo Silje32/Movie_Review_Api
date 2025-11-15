@@ -8,9 +8,10 @@ const {
 // third party imports
 const express = require("express");
 const router = express.Router();
-const path = require("path");
 
 // Define routes
-router("/:id").get(getReviewsByMovieId).post(postReview);
+router("/:id")
+  .get("/review", "insertReviewsTable", getReviewsByMovieId)
+  .post("/createReview", "insertReviewsTable", postReview);
 
 module.exports = router;

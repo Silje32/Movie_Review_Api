@@ -10,11 +10,16 @@ const {
 // third party imports
 const express = require("express");
 const router = express.Router();
-const path = require("path");
 
 // Define routes
-router.route("/").get(getAllMovies).post(postMovie);
+router
+  .route("/")
+  .get("/movies", "insertMoviesTable", getAllMovies)
+  .post("/postMovies", "insertMoviesTable", postMovie);
 
-router.route("/:id").get(getMovieById).put(putMovie);
+router
+  .route("/:id")
+  .get("/findMovie", "insertMoviesTable", getMovieById)
+  .put("/updateMovie", "MoviesTable", putMovie);
 
 module.exports = router;

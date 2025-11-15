@@ -4,8 +4,8 @@ const moviesController = require("./src/controllers/moviesController.js");
 const reviewController = require("./src/controllers/reviewController.js");
 const moviesRoutes = require("./src/routes/movies.js");
 const reviewsRoutes = require("./src/routes/reviews.js");
-const seedMoviesTable = require("main.db");
-const seedReviewsTable = require("main.db");
+const insertMoviesTable = require("main.db");
+const insertReviewsTable = require("main.db");
 
 // third party
 const express = require("express");
@@ -28,8 +28,8 @@ app.use("/routes/auth.js", authController);
 app.use("/routes/user.js", registerController);
 app.use("/routes/movies.js", moviesRoutes);
 app.use("/routes/reviews.js", reviewsRoutes);
-app.use("/main.db", seedMoviesTable);
-app.use("/main.db", seedReviewsTable);
+app.use("/main.db", insertMoviesTable);
+app.use("/main.db", insertReviewsTable);
 
 const PORT = process.env.PORT || 3500;
 app.listen;

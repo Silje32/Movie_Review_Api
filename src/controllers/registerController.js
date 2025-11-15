@@ -3,15 +3,6 @@ const bcrypt = require("bcrypt");
 const path = require("path");
 const fsPromises = require("fs").promises;
 
-// Database
-/* 
-const usersDB = {
-  users: require("../model/users.json"),
-  SetUsers: function (data) {
-    this.users = data;
-  },
-};
-*/
 const handleNewUser = async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {

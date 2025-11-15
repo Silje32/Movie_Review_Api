@@ -7,16 +7,6 @@ const crypto = require("crypto");
 
 require("dotenv").config();
 
-// Database
-/* 
-const usersDB = {
-  users: require("../model/users.json"),
-  SetUsers: function (data) {
-    this.users = data;
-  },
-};
-*/
-
 const authorizeNewUser = async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password)

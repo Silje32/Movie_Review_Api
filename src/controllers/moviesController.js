@@ -3,7 +3,7 @@
 // Hent alle filmer fra databasen (Read)
 const getAllMovies = (req, res) => {
   try {
-    const newMovie = seedMoviesTable();
+    const newMovie = insertMoviesTable();
     res.status(newMovie);
   } catch (error) {
     // Hvis noen prøver å hente en film som ikke finnes : 404 Not Found.
@@ -42,7 +42,7 @@ const postMovie = (req, res) => {
       .json({ error: "Title, director, release year and genre are required." });
   }
   try {
-    const newMovie = seedMoviesTable({
+    const newMovie = insertMoviesTable({
       title,
       director,
       release_year,

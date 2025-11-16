@@ -14,7 +14,7 @@ const router = express.Router();
 // Define routes
 router
   .route("/")
-  .get("/movies", "insertMoviesTable", getAllMovies)
+  .get("/movies", "moviesController", getAllMovies)
   .post("/postMovies", "insertMoviesTable", postMovie);
 
 router

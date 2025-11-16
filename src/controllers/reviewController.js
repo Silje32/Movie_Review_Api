@@ -1,5 +1,5 @@
 // Imports
-const { seedReviewsTable } = require("../../main.db");
+const { insertReviewsTable } = require("../../main.db");
 const { post } = require("../../app.js");
 
 /* Lag CRUD-endepunkter */
@@ -13,7 +13,7 @@ const postReview = (req, res) => {
     });
   }
   try {
-    const newReview = seedReviewsTable({
+    const newReview = insertReviewsTable({
       movieId,
       reviewAuthor,
       reviewText,

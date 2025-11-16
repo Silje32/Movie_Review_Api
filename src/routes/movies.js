@@ -20,6 +20,6 @@ router
 router
   .route("/:id")
   .get("/findMovie", "insertMoviesTable", getMovieById)
-  .put("/updateMovie", "MoviesTable", putMovie);
+  .put("/updateMovie", "insertMoviesTable", putMovie);
 
 module.exports = router;

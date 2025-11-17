@@ -41,3 +41,8 @@
 2. Check in package.json that the file is properly installed:
    "dependencies"
    "better-sqlite3"
+
+# How to make a Json Web Token:
+
+1. In the terminal write: node
+2. In the terminal write: require("crypto").randomBytes(64).toString("hex") Press enter and the crypto package will make a web token for you.

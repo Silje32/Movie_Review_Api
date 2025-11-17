@@ -19,6 +19,9 @@ const authorizeNewUser = async (req, res) => {
   if (!foundUser) return res.sendStatus(401);
   ({ message: "Unauthorized" });
   const match = await bcrypt.compare(password, foundUser.password);
+  if (match) {
+    res.json({ success: `User ${username} logged in!` });
+  }
 };
 
 const accessToken = jwt.sign(

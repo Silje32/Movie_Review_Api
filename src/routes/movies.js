@@ -15,11 +15,11 @@ const router = express.Router();
 router
   .route("/")
   .get("/movies", "moviesController", getAllMovies)
-  .post("/postMovies", "insertMoviesTable", postMovie);
+  .post("/postMovies", "moviesController", postMovie);
 
 router
   .route("/:id")
-  .get("/findMovie", "insertMoviesTable", getMovieById)
-  .put("/updateMovie", "insertMoviesTable", putMovie);
+  .get("/findMovie", "moviesController", getMovieById)
+  .put("/updateMovie", "moviesController", putMovie);
 
 module.exports = router;

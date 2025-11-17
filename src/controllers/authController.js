@@ -2,6 +2,8 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const path = require("path");
+const fsPromises = require("fs").promises;
 
 require("dotenv").config();
 

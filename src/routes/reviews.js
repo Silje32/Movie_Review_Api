@@ -11,7 +11,9 @@ const router = express.Router();
 
 // Define routes
 router("/:id")
-  .get("/review", "insertReviewsTable", getReviewsByMovieId)
-  .post("/createReview", "insertReviewsTable", postReview);
+  /* Hent alle reviews for en film */
+  .get("/review", "reviewController", getReviewsByMovieId)
+  /* Legg inn en reviews */
+  .post("/createReview", "reviewController", postReview);
 
 module.exports = router;

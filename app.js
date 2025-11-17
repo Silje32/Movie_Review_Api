@@ -26,13 +26,14 @@ const app = express();
 app.use(bodyParser.json());
 
 // routes
-app.use("/routes/auth.js", authController);
-app.use("/routes/user.js", registerController);
-app.use("/routes/movies.js", moviesRoutes);
-app.use("/routes/reviews.js", reviewsRoutes);
-app.use("/postReview", reviewController);
-app.use("/main.db", insertMoviesTable);
-app.use("/main.db", insertReviewsTable);
+app.use("/auth", require("./routes/auth.js", authController));
+app.use("/user", require("./routes/user.js", registerController));
+app.use("/movies", require("./routes/movies.js", moviesRoutes));
+app.use("/reviews", require("./routes/reviews.js", reviewsRoutes));
+app.use("/postReview", require("./routes/postReview", reviewController));
+app.use("./createReview", require("./routes/createReview", reviewController));
+app.use("/", require("/main.db", insertMoviesTable));
+app.use("/", require("/main.db", insertReviewsTable));
 
 const PORT = process.env.PORT || 3500;
 app.listen;

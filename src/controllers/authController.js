@@ -22,6 +22,8 @@ const authorizeNewUser = async (req, res) => {
   if (match) {
     res.json({ success: `User ${username} logged in!` });
   }
+  else {
+    res.status(401).json({ message: "Unauthorized" });
 };
 
 const accessToken = jwt.sign(

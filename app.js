@@ -6,6 +6,8 @@ const moviesRoutes = require("./src/routes/movies.js");
 const reviewsRoutes = require("./src/routes/reviews.js");
 const insertMoviesTable = require("main.db");
 const insertReviewsTable = require("main.db");
+const authController = require("./src/routes/auth.js");
+const registerController = require("./src/routes/user.js");
 
 // third party
 const express = require("express");
@@ -28,6 +30,7 @@ app.use("/routes/auth.js", authController);
 app.use("/routes/user.js", registerController);
 app.use("/routes/movies.js", moviesRoutes);
 app.use("/routes/reviews.js", reviewsRoutes);
+app.use("/postReview", reviewController);
 app.use("/main.db", insertMoviesTable);
 app.use("/main.db", insertReviewsTable);
 

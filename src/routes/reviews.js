@@ -10,10 +10,6 @@ const express = require("express");
 const router = express.Router();
 
 // Define routes
-router("/:id")
-  /* Hent alle reviews for en film */
-  .get("/review", "reviewController", getReviewsByMovieId)
-  /* Legg inn en reviews */
-  .post("/createReview", "reviewController", postReview);
+router.route("/:id").get(getReviewsByMovieId).post(postReview);
 
 module.exports = router;

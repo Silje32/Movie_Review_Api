@@ -38,8 +38,6 @@ const authorizeNewUser = async (req, res) => {
   } else {
     res.sendStatus(401).json({ message: "Unauthorized" });
   }
-
-  res.json({ success: `User ${username} logged in!` });
 };
 
 module.exports = { authorizeNewUser };

@@ -2,13 +2,19 @@
 
 # API endpoints:
 
-Method: Endpoints: Description:
 GET /movies/ Get all the movies
 GET /movies/:id Get a movie with ID
 POST /movies/ Post a new movie
 PUT /movies/:id Edit a movie
 POST /movies/:id/reviews Post a review
 GET /movies/:id/reviews Get all reviews for a movie
+
+# How to integrate SQLite:
+
+1. In the terminal write: npm install better-sqlite3.
+2. Check in package.json that the file is properly installed:
+   "dependencies"
+   "better-sqlite3"
 
 # How to make a .env file:
 
@@ -44,13 +50,6 @@ GET /movies/:id/reviews Get all reviews for a movie
 4.  Make a req, res function and create a try catch block.
 5.  Inside the try block make a hashedPwd await function.
     const hashedPwd = await bcrypt.hash(pwd,10);
-
-# How to integrate SQLite:
-
-1. In the terminal write: npm install better-sqlite3.
-2. Check in package.json that the file is properly installed:
-   "dependencies"
-   "better-sqlite3"
 
 # How to make a Json Web Token:
 

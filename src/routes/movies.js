@@ -12,14 +12,8 @@ const express = require("express");
 const router = express.Router();
 
 // Define routes
-router
-  .route("/")
-  .get("/movies", "moviesController", getAllMovies)
-  .post("/postMovies", "moviesController", postMovie);
+router.route("/").get(getAllMovies).post(postMovie);
 
-router
-  .route("/:id")
-  .get("/findMovie", "moviesController", getMovieById)
-  .put("/updateMovie", "moviesController", putMovie);
+router.route("/:id").get(getMovieById).put(putMovie);
 
 module.exports = router;

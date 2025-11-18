@@ -2,12 +2,23 @@
 
 # API endpoints:
 
-GET /movies/ Get all the movies
-GET /movies/:id Get a movie with ID
-POST /movies/ Post a new movie
-PUT /movies/:id Edit a movie
-POST /movies/:id/reviews Post a review
-GET /movies/:id/reviews Get all reviews for a movie
+GET: /movies/
+Get all the movies
+
+GET: /movies/:id
+Get a movie with ID
+
+POST: /movies/
+Post a new movie
+
+PUT: /movies/:id
+Edit a movie
+
+POST: /movies/:id/reviews
+Post a review
+
+GET: /movies/:id/reviews
+Get all reviews for a movie
 
 # How to integrate SQLite:
 

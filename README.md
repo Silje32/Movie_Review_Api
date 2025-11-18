@@ -1,5 +1,15 @@
 # Lag et Movie Review API slik at både filmelskere og kritikere kan finne dele og oppdatere filmanmeldelser:
 
+# API endpoints:
+
+Method: Endpoints: Description:
+GET /movies/ Get all the movies
+GET /movies/:id Get a movie with ID
+POST /movies/ Post a new movie
+PUT /movies/:id Edit a movie
+POST /movies/:id/reviews Post a review
+GET /movies/:id/reviews Get all reviews for a movie
+
 # How to make a .env file:
 
 1.  In the terminal write : npm install dotenv.

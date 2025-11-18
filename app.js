@@ -5,8 +5,6 @@ const moviesController = require("./src/controllers/moviesController.js");
 const reviewController = require("./src/controllers/reviewController.js");
 const moviesRoutes = require("./src/routes/movies.js");
 const reviewsRoutes = require("./src/routes/reviews.js");
-const insertMoviesTable = require("main.db");
-const insertReviewsTable = require("main.db");
 const authController = require("./src/routes/auth.js");
 const registerController = require("./src/routes/user.js");
 
@@ -27,17 +25,12 @@ const app = express();
 app.use(bodyParser.json());
 
 // routes
-app.use("/auth", require("./routes/auth.js", authController));
-app.use("/user", require("./routes/user.js", registerController));
-app.use("/movies", require("./routes/movies.js", moviesRoutes));
-app.use("/reviews", require("./routes/reviews.js", reviewsRoutes));
-app.use("/postReview", require("./routes/postReview", reviewController));
-app.use("./createReview", require("./routes/createReview", reviewController));
-app.use("/", require("/main.db", insertMoviesTable));
-app.use("/", require("/main.db", insertReviewsTable));
+app.use("/auth", authController);
+app.use("/user", registerController);
+app.use("/movies", moviesRoutes);
+app.use("/reviews", reviewsRoutes);
 
 const PORT = process.env.PORT || 3500;
-app.listen;
 
 // Create Movies table
 db.prepare(

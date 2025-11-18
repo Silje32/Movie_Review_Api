@@ -1,3 +1,4 @@
+require("dotenv").config();
 // imports
 // first party
 const moviesController = require("./src/controllers/moviesController.js");

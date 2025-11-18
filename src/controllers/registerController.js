@@ -1,5 +1,6 @@
 // imports
 const bcrypt = require("bcrypt");
+
 const path = require("path");
 const fsPromises = require("fs").promises;
 
@@ -14,13 +15,12 @@ const handleNewUser = async (req, res) => {
     try {
       const hashedPwd = await bcrypt.hash(password, 10);
       const newUser = {
-        username: user,
+        username: username,
         password: hashedPwd,
       };
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
   }
-
-  module.exports = { handleNewUser };
 };
+module.exports = { handleNewUser };

@@ -1,7 +1,3 @@
-// Imports
-const { insertReviewsTable } = require("../../main.db");
-const { post } = require("../../app.js");
-
 /* Lag CRUD-endepunkter */
 
 // Legg inn en review. (Create)

@@ -4,11 +4,11 @@
 const getAllMovies = (req, res) => {
   try {
     const newMovie = insertMoviesTable();
-    res.status(newMovie);
+    res.sendStatus(newMovie);
   } catch (error) {
     // Hvis noen prøver å hente en film som ikke finnes : 404 Not Found.
     console.error("Database error", error.message);
-    res.status(404).json({
+    res.sendStatus(404).json({
       error: "Not Found.",
     });
   }
@@ -21,12 +21,12 @@ const getMovieById = (req, res) => {
   try {
     const getAllMovies = getMovieById(id);
     if (!getAllMovies) {
-      return res.status(404).json({ error: "Movie not found." });
+      return res.sendStatus(404).json({ error: "Movie not found." });
     }
     res.json(getAllMovies);
   } catch (error) {
     console.error("Database error:", error.message);
-    res.status(500).json({
+    res.sendStatus(500).json({
       error: "An error occurred while fetching the movie.",
     });
   }
@@ -38,7 +38,7 @@ const postMovie = (req, res) => {
 
   if (!title || !director || !release_year || !genre) {
     return res
-      .status(400)
+      .sendStatus(400)
       .json({ error: "Title, director, release year and genre are required." });
   }
   try {
@@ -49,7 +49,7 @@ const postMovie = (req, res) => {
       genre,
     });
     // Når en film blir opprettet: 201 Created.
-    res.status(201).json({
+    res.sendStatus(201).json({
       message: "Movie created successfully.",
       movie: {
         id: newMovie.lastInsertRowid,
@@ -62,7 +62,7 @@ const postMovie = (req, res) => {
     // Hvis noen sender inn en post uten title eller year: 400 Bad Request.
   } catch (error) {
     console.error("Error creating movie:", error.message);
-    res.status(400).json({
+    res.sendStatus(400).json({
       error: "An error occurred while creating the movie.",
     });
   }
@@ -75,18 +75,18 @@ const putMovie = (req, res) => {
 
   // Når en film blir oppdatert: 200 OK eller 204 No Content.
   if (!title || !director || !release_year || !genre) {
-    return res.status(200).json({ error: "OK" });
+    return res.sendStatus(200).json({ error: "OK" });
   }
   try {
     const result = updateMovie(id, { title, director, release_year, genre });
 
     if (result.changes === 0) {
-      return res.status(204).json({ error: "No content." });
+      return res.sendStatus(204).json({ error: "No content." });
     }
     res.json({ message: "Movie updated successfully." });
   } catch (error) {
     console.error("Database error:", error.message);
-    res.status(500).json({
+    res.sendStatus(500).json({
       error: "Failed to update movie.",
     });
   }

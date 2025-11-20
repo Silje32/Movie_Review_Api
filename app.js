@@ -1,4 +1,4 @@
-require("dotenv").config();
+//require("dotenv").config();
 // imports
 // first party
 const moviesController = require("./src/controllers/moviesController.js");
@@ -7,6 +7,7 @@ const moviesRoutes = require("./src/routes/movies.js");
 const reviewsRoutes = require("./src/routes/reviews.js");
 const authController = require("./src/routes/auth.js");
 const registerController = require("./src/routes/user.js");
+require("./src/database/init.js")
 
 // third party
 const express = require("express");
@@ -15,7 +16,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const Database = require("better-sqlite3");
 const dbPath = path.join(__dirname, "main.db");
-const db = new Database(dbPath, { verbose: console.log });
+// const db = new Database(dbPath, { verbose: console.log });
 console.log("Connected to the SQLite database and created a Table.");
 
 // create express app
@@ -32,35 +33,47 @@ app.use("/reviews", reviewsRoutes);
 
 const PORT = process.env.PORT || 3500;
 
-// Create Movies table
-db.prepare(
-  `CREATE TABLE IF NOT EXISTS Movies
-(
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  title TEXT NOT NULL,
-  director TEXT NOT NULL,
-  release_year INTEGER NOT NULL,
-  genre TEXT NOT NULL
-)
+// // Create Movies table
+// db.prepare(
+//   `CREATE TABLE IF NOT EXISTS Movies
+// (
+//   id INTEGER PRIMARY KEY AUTOINCREMENT,
+//   title TEXT NOT NULL,
+//   director TEXT NOT NULL,
+//   release_year INTEGER NOT NULL,
+//   genre TEXT NOT NULL
+// )
   
-`
-).run();
-console.log("Movies table created.");
+// `
+// ).run();
+// console.log("Movies table created.");
 
-// Create Reviews table
-db.prepare(
-  `CREATE TABLE IF NOT EXISTS Reviews
-(
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  movieId INTEGER FOREIGN KEY AUTOINCREMENT,
-  reviewAuthor: TEXT NOT NULL,
-  reviewText: TEXT NOT NULL,
-  rating: INTEGER NOT NULL
-)
+// // Create Reviews table
+// // db.prepare(
+// //   `CREATE TABLE IF NOT EXISTS Reviews
+// // (
+// //   id INTEGER PRIMARY KEY AUTOINCREMENT,
+// //   movieId INTEGER FOREIGN KEY AUTOINCREMENT,
+// //   reviewAuthor: TEXT NOT NULL,
+// //   reviewText: TEXT NOT NULL,
+// //   rating: INTEGER NOT NULL
+// // )
   
-`
-).run();
-console.log("Reviews table created.");
+// // `
+// // ).run();
+
+// db.prepare(
+//   `CREATE TABLE IF NOT EXISTS Reviews
+// (
+//   id INTEGER PRIMARY KEY AUTOINCREMENT,
+//   movieId INTEGER NOT NULL,
+//   reviewAuthor TEXT NOT NULL,
+//   reviewText TEXT NOT NULL,
+//   rating INTEGER NOT NULL,
+//   FOREIGN KEY (movieId) REFERENCES Movies(id)
+// )`
+// ).run();
+// console.log("Reviews table created.");
 
 // start server
 app.listen(PORT, () => {

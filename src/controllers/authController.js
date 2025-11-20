@@ -5,6 +5,9 @@ const crypto = require("crypto");
 const path = require("path");
 const fsPromises = require("fs").promises;
 
+const db = require("../database/db");
+
+
 require("dotenv").config();
 
 const authorizeNewUser = async (req, res) => {

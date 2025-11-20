@@ -1,3 +1,6 @@
+const db = require("../database/db");
+
+
 /* Lag CRUD-endepunkter */
 
 // Legg inn en review. (Create)

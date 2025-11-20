@@ -1,4 +1,7 @@
 // imports
+const db = require("../database/db");
+
+
 const bcrypt = require("bcrypt");
 
 const path = require("path");

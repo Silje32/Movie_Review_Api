@@ -3,11 +3,13 @@
 // first party
 const moviesController = require("./src/controllers/moviesController.js");
 const reviewController = require("./src/controllers/reviewController.js");
+const authController = require("./src/controllers/authController.js");
+const registerController = require("./src/controllers/registerController.js");
 const moviesRoutes = require("./src/routes/movies.js");
 const reviewsRoutes = require("./src/routes/reviews.js");
-const authController = require("./src/routes/auth.js");
-const registerController = require("./src/routes/user.js");
-require("./src/database/init.js")
+const authRoutes = require("./src/routes/auth.js");
+const registerRoutes = require("./src/routes/user.js");
+require("./src/database/init.js");
 
 // third party
 const express = require("express");
@@ -26,10 +28,10 @@ const app = express();
 app.use(bodyParser.json());
 
 // routes
-app.use("/auth", authController);
-app.use("/user", registerController);
-app.use("/movies", moviesRoutes);
-app.use("/reviews", reviewsRoutes);
+app.use("/auth", require("./src/routes/auth"));
+app.use("/user", require("./src/routes/register"));
+app.use("/movies", require("./src/routes/movies"));
+app.use("/reviews", require("./src/routes/reviews"));
 
 const PORT = process.env.PORT || 3500;
 
@@ -43,7 +45,7 @@ const PORT = process.env.PORT || 3500;
 //   release_year INTEGER NOT NULL,
 //   genre TEXT NOT NULL
 // )
-  
+
 // `
 // ).run();
 // console.log("Movies table created.");
@@ -58,7 +60,7 @@ const PORT = process.env.PORT || 3500;
 // //   reviewText: TEXT NOT NULL,
 // //   rating: INTEGER NOT NULL
 // // )
-  
+
 // // `
 // // ).run();
 

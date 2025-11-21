@@ -12,8 +12,8 @@ const express = require("express");
 const router = express.Router();
 
 // Define routes
-router.route("/").get(getAllMovies).post(postMovie);
+router.route("/").get(getAllMovies).post(postMovie).put(putMovie);
 
-router.route("/:id").get(getMovieById).put(putMovie);
+router.route("/:id").get(getMovieById);
 
 module.exports = router;

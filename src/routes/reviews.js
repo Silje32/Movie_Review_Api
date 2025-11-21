@@ -10,6 +10,7 @@ const express = require("express");
 const router = express.Router();
 
 // Define routes
-router.route("/:id").get(getReviewsByMovieId).post(postReview);
+router.route("/").post(postReview);
+router.route("/:id").get(getReviewsByMovieId);
 
 module.exports = router;

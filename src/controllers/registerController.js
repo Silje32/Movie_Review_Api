@@ -1,10 +1,17 @@
+const db = {
+  users: require("../database/db"),
+  setUsers: function (data) {
+    this.users = data;
+  },
+};
+
 // imports
 const db = require("../database/db");
-
 
 const bcrypt = require("bcrypt");
 
 const path = require("path");
+const { set } = require("../../app");
 const fsPromises = require("fs").promises;
 
 const handleNewUser = async (req, res) => {
@@ -13,7 +20,7 @@ const handleNewUser = async (req, res) => {
     return res
       .status(400)
       .json({ message: "Username and password are required." });
-    const duplicate = usersDB.users.find((person) => person.username === user);
+    const duplicate = db.users.find((person) => person.username === user);
     if (duplicate) return res.sendStatus(409);
     try {
       const hashedPwd = await bcrypt.hash(password, 10);
@@ -21,6 +28,13 @@ const handleNewUser = async (req, res) => {
         username: username,
         password: hashedPwd,
       };
+      db.setUsers([...db.users, newUser]);
+      await fsPromises.writeFile(
+        path.join(__dirname, "..", "database", "db"),
+        JSON.stringify(db.users)
+      );
+      console.log("db.users");
+      return res.status(201).json({ message: `New user ${username} created!` });
     } catch (err) {
       res.status(500).json({ message: err.message });
     }

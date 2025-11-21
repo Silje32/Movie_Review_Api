@@ -1,12 +1,17 @@
 // imports
+
+const db = {
+  users: require("../database/db"),
+  setUsers: function (data) {
+    this.users = data;
+  },
+};
+
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const path = require("path");
 const fsPromises = require("fs").promises;
-
-const db = require("../database/db");
-
 
 require("dotenv").config();
 
@@ -17,9 +22,7 @@ const authorizeNewUser = async (req, res) => {
       .status(400)
       .json({ message: "Username and password are required." });
 
-  const foundUser = usersDB.users.find(
-    (person) => person.username === username
-  );
+  const foundUser = db.users.find((person) => person.username === username);
 
   if (!foundUser) return res.sendStatus(401);
   ({ message: "Unauthorized" });

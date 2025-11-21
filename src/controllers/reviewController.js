@@ -1,62 +1,44 @@
 const db = require("../database/db");
 
-
 /* Lag CRUD-endepunkter */
 
 // Legg inn en review. (Create)
 const postReview = (req, res) => {
-  const { movieId, reviewAuthor, reviewText, rating } = req.body;
-  if (!movieId || !reviewAuthor || !reviewText || !rating) {
-    return res.status(400).json({
-      error: "MovieId, reviewAuthor, reviewText and rating are required.",
-    });
-  }
   try {
-    const newReview = insertReviewsTable({
-      movieId,
-      reviewAuthor,
-      reviewText,
-      rating,
-    });
+    const { movieId, reviewAuthor, reviewText, rating } = req.body;
 
-    // Når en anmeldelse legges til: 201 Created.
-    res.status(201).json({
-      message: "Review created successfully.",
-      review: {
-        id: newReview.lastInsertRowid,
-        movieId,
-        reviewAuthor,
-        reviewText,
-        rating,
-      },
-    });
+    const stmt = db.prepare(
+      `INSERT INTO Reviews (movieId, reviewAuthor, reviewText, rating)
+         VALUES (?, ?, ?, ?)`
+    );
+    const result = stmt.run(movieId, reviewAuthor, reviewText, rating);
+
+    res.sendStatus(201).json({ id: result.lastInsertRowid });
   } catch (error) {
-    console.error("Error creating review:", error.message);
-    res.status(500).json({
-      error: "An error occurred while creating the review.",
-    });
+    console.error("Database error:", error.message);
+    res.sendStatus(500);
   }
 };
 
 // Hent alle reviews for en spesifikk film. (Read)
 const getReviewsByMovieId = (req, res) => {
-  const { id } = req.params;
-
   try {
-    const postReview = getReviewsById(id);
-    if (!postReview) {
-      return res
-        .status(404)
-        .json({ error: "Reviews not found for the movie." });
+    const stmt = db.prepare(`SELECT * FROM REVIEWS WHERE id = ?`);
+    const review = stmt.get(req.params.id);
+
+    if (!movieId) {
+      return res.sendStatus(404);
     }
-    res.json();
+
+    res.json(review);
   } catch (error) {
     console.error("Database error:", error.message);
-    res.status(500).json({
+    res.sendStatus(500).json({
       error: "An error occurred while fetching the review.",
     });
   }
 };
+
 module.exports = {
   postReview,
   getReviewsByMovieId,

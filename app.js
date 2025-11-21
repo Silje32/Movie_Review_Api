@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 
 // routes
 app.use("/auth", require("./src/routes/auth"));
-app.use("/user", require("./src/routes/register"));
+app.use("/register", require("./src/routes/user"));
 app.use("/movies", require("./src/routes/movies"));
 app.use("/reviews", require("./src/routes/reviews"));
 

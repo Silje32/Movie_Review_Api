@@ -1,12 +1,10 @@
+// imports
 const db = {
   users: require("../database/db"),
   setUsers: function (data) {
     this.users = data;
   },
 };
-
-// imports
-const db = require("../database/db");
 
 const bcrypt = require("bcrypt");
 

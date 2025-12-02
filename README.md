@@ -67,3 +67,11 @@ Get all reviews for a movie.
 1. In the terminal write: node
 2. In the terminal write: require("crypto").randomBytes(64).toString("hex") Press enter and the crypto package will make a web token for you.
 3. Press Ctrl + C two times to get out of node.
+
+## How to create a Database - Steps :
+
+```sh
+node db.js - Make a database file
+node init.js - Make the tables
+node seeding.js - Fills the tables with values
+```

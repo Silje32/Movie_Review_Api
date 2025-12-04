@@ -1,4 +1,4 @@
-# Lag et Movie Review API slik at både filmelskere og kritikere kan finne dele og oppdatere filmanmeldelser:
+# A Node.js REST API for managing movie reviews:
 
 # API endpoints:
 

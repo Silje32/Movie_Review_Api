@@ -1,6 +1,6 @@
 # A Node.js REST API for managing movie reviews:
 
-# API endpoints:
+## API endpoints:
 
 GET: /movies/
 Get all the movies.

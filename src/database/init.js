@@ -19,7 +19,8 @@ db.prepare(
   reviewAuthor TEXT NOT NULL,
   reviewText TEXT NOT NULL,
   rating INTEGER NOT NULL,
-  FOREIGN KEY (movieId) REFERENCES Movies(id)
+  FOREIGN KEY (movieId) 
+    REFERENCES Movies(id)
 )`
 ).run();
 

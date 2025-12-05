@@ -88,35 +88,73 @@ db.prepare(
 db.prepare(
   `INSERT INTO Reviews (id, movieId, reviewAuthor, reviewText, rating)
       VALUES (?, ?, ?, ?, ?)`
-).run("1", "1", "Alice", "An amazing movie about hope and friendship.", 5);
+).run("1", "1", "Alice", "An amazing movie about hope and friendship.", 8);
 
 const reviewValues = [
-  ["2", "2", "Bob", "A masterpiece of cinema with brilliant performances.", 5],
-  ["3", "3", "Charlie", "An intense and thrilling superhero film.", 4],
-  ["4", "4", "Diana", "A stylish and witty crime film with great dialogue.", 5],
-  ["5", "5", "Ethan", "A heartwarming story with unforgettable characters.", 5],
+  [
+    "2",
+    "1",
+    "Bob",
+    "A story about hope, friendship, and perseverance against overwhelming odds",
+    9,
+  ],
+  [
+    "3",
+    "1",
+    "Charlie",
+    "It is an extraordinary tale of hope, friendship and survival inside a maximum security prison.",
+    8,
+  ],
+  [
+    "4",
+    "2",
+    "Diana",
+    "A chilling portrait of the Corleone family´s rise and near fall from power in America.",
+    7,
+  ],
+  ["5", "2", "Ethan", "Exploring themes of power and moral decay.", 8],
   [
     "6",
-    "6",
+    "2",
     "Fiona",
-    "A mind-bending sci-fi thriller with stunning visuals.",
+    "Epic tale of family, crime, corruption, and the Immigrant experience in America.",
     4,
   ],
+  ["7", "3", "George", "Dark, complex and unforgettable.", 9],
   [
-    "7",
-    "7",
-    "George",
-    "A revolutionary film that changed the sci-fi genre.",
-    5,
+    "8",
+    "3",
+    "Hannah",
+    "The Dark Knight succeeds not just as an entertaining comic book film, but as a richly thrilling crime saga.",
+    8,
   ],
-  ["8", "8", "Hannah", "A dark and thought-provoking drama about identity.", 4],
-  ["9", "9", "Ian", "An epic fantasy adventure with breathtaking visuals.", 5],
+  [
+    "9",
+    "3",
+    "Ian",
+    "This movie is filled with lots of emotions. It has such great characters and of course the dialogs are so good. The performances are incredible.",
+    10,
+  ],
   [
     "10",
-    "10",
+    "4",
     "Jane",
-    "A visually stunning and emotionally powerful sci-fi film.",
-    5,
+    "Brilliant and brutal, funny and exhilarating, jaw-droppingly cruel and disarmingly sweet.",
+    7,
+  ],
+  [
+    "11",
+    "4",
+    "Jane",
+    "Pulp Fiction is comic and grim, sun-soaked and shadowy, tender and blunt.",
+    6,
+  ],
+  [
+    "12",
+    "4",
+    "Jane",
+    "Every element of the bizarre, dizzying journey is carefully conceived and executed to take its viewers into the darkest recesses of life, then, with a wink and a laugh, set them free.",
+    6,
   ],
 ];
 

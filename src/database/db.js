@@ -8,3 +8,4 @@ const db = new Database(dbPath, {
 });
 
 module.exports = db;
+db

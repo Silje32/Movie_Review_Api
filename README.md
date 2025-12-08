@@ -75,3 +75,5 @@ node db.js - Make a database file
 node init.js - Make the tables
 node seeding.js - Fills the tables with values
 ```
+
+If you want to seed a file twice you have to comment out what you already have seeded.
